@@ -53,10 +53,10 @@ $(function() {
       }
     });
 
-    $("div.push,div.watch_started,div.follow,div.repo,div.release,div.issues_labeled").each(function() {
-      const push = $(this);
-      var contains_link = false;
-      push.find("a").each(function() {
+    $('div.push,div.watch_started,div.follow,div.repo,div.release,div.issues_labeled,div[classes="push js-feed-item-view"],div[classes="release js-feed-item-view"]').each(function() {
+      const element = $(this);
+      let contains_link = false;
+      element.find("a").each(function() {
         const a = $(this);
         const href = a.attr("href");
         if (href.indexOf("/" + github_username + "/") == 0) {
@@ -65,7 +65,7 @@ $(function() {
         }
       });
       if (contains_link) {
-        push.remove();
+        element.remove();
       }
     });
   };
